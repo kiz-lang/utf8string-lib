@@ -1,6 +1,6 @@
 #pragma once
 
-export module utf8
+export module utf8;
 import std;
 
 export namespace utf8 {
