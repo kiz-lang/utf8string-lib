@@ -9,7 +9,7 @@ TEST(UTF8CharTest, Ascii) {
 }
 
 TEST(UTF8CharTest, Chinese) {
-  const char* buf = "\xE4\xB8\xAD";
+  const char buf[] = "\xE4\xB8\xAD";
   utf8::UTF8Char c{buf, 3};
   EXPECT_EQ(c.bytesize(), 3);
   EXPECT_EQ(c.to_cod_point(), 0x4E2D);
