@@ -9,6 +9,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# 开启模块支持（解决你现在的报错）
+add_compile_options(-fmodules-ts)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -17,16 +20,11 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# 重点：把你的模块文件加进来
 add_executable(utf8_test
   test.cpp
   core.cppm
 )
 
-target_link_libraries(utf8_test
-  PRIVATE
-  GTest::gtest_main
-)
-
+target_link_libraries(utf8_test PRIVATE GTest::gtest_main)
 include(GoogleTest)
 gtest_discover_tests(utf8_test)
